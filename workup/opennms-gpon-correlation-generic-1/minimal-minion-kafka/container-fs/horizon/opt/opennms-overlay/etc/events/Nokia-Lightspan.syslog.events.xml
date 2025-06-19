@@ -1,0 +1,528 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+   <!-- ******************************************************************************************** -->
+   <!-- olt-ont syslog events which are not turned into alarms but used by event translator for ONT  -->
+   <!-- ******************************************************************************************** -->
+
+   <!-- critical -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/critical</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Critical</severity>
+   </event>
+
+   <!-- major -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/major</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Major</severity>
+   </event>
+
+   <!-- minor -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/minor</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Minor</severity>
+   </event>
+
+   <!-- warning -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/warning</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Warning</severity>
+   </event>
+
+   <!-- cleared -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/cleared</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Cleared</severity>
+   </event>
+
+   <!-- indeterminate -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/indeterminate</uei>
+      <event-label>Nokia/Lightspan Syslog OLT-ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT-ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+
+
+   <!-- ******************************************************* -->
+   <!-- olt syslog events which are directly turned into alarm  -->
+   <!-- ******************************************************* -->
+
+   <!-- critical -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/critical</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Critical</severity>
+   </event>
+
+   <!-- major -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/major</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Major</severity>
+   </event>
+
+   <!-- minor -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/minor</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Minor</severity>
+   </event>
+
+   <!-- warning -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/warning</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Warning</severity>
+   </event>
+
+   <!-- cleared -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/cleared</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Cleared</severity>
+   </event>
+
+   <!-- indeterminate -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/indeterminate</uei>
+      <event-label>Nokia/Lightspan Syslog OLT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Indeterminate</severity>
+   </event>
+
+   <!-- ************************************************** -->
+   <!-- olt syslog events which are not turned into alarms -->
+   <!-- ************************************************** -->
+   <event>
+      <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog</uei>
+      <event-label>Nokia/Lightspan Syslog Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan Syslog Event MODULE_NAME: %parm[MODULE_NAME]% event-text: %parm[alarm-text]%&lt;/p>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         alarm-text %parm[alarm-text]% &lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan Syslog Event MODULE_NAME: %parm[MODULE_NAME]% event-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Normal</severity>
+   </event>
+ 
+
+</events>

@@ -1,0 +1,44 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+   <!-- note these events will clear with the usual event uei.opennms.org/nodes/nodeRegainedService -->
+   <event>
+       <mask>
+         <maskelement>
+           <mename>service</mename>
+           <mevalue>passive-secondary-node</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/nodes/nodeLostService</uei>
+      <event-label>GPON Secondary Passive Node Event</event-label>
+      <descr>&lt;p>GPON Secondary Node Problem detected:  %parm[eventReason]%&lt;p>
+      &lt;p>A %service% outage was identified on interface
+            %interface% because of the following condition: %parm[eventReason]%.&lt;/p> &lt;p>
+            A new outage record has been created and service level
+            availability calculations will be impacted until this outage is
+            resolved.&lt;/p></descr>
+      <logmsg dest="logndisplay">GPON Secondary Node Problem detected: %parm[eventReason]%</logmsg>
+      <severity>Major</severity>
+      <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%interface%:%service%" alarm-type="1" auto-clean="false"/>
+   </event>
+   
+   <event>
+      <mask>
+         <maskelement>
+           <mename>service</mename>
+           <mevalue>passive-primary-node</mevalue>
+         </maskelement>
+      </mask>
+      <uei>uei.opennms.org/nodes/nodeLostService</uei>
+      <event-label>GPON Primary Passive Node Event</event-label>
+      <descr>&lt;p>GPON Primary Node Problem detected:  %parm[eventReason]%&lt;p>
+      &lt;p>A %service% outage was identified on interface
+            %interface% because of the following condition: %parm[eventReason]%.&lt;/p> &lt;p>
+            A new outage record has been created and service level
+            availability calculations will be impacted until this outage is
+            resolved.&lt;/p></descr>
+      <logmsg dest="logndisplay">GPON Primary Node Problem detected: %parm[eventReason]%</logmsg>
+      <severity>Major</severity>
+      <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%interface%:%service%" alarm-type="1" auto-clean="false"/>
+   </event>
+
+</events>

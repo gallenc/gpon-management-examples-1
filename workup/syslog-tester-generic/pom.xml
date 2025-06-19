@@ -1,0 +1,237 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>org.opennms.test.application</groupId>
+   <artifactId>syslog-tester-generic</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <name>syslog-tester-generic</name>
+   <packaging>jar</packaging>
+
+   <description>Simple application to send test syslogs to a syslog client like
+		OpenNMS</description>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.target>11</maven.compiler.target>
+
+      <!-- junit dependencies -->
+      <junit.version>4.12</junit.version>
+      <hamcrest-core.version>1.3</hamcrest-core.version>
+
+      <!-- dependencies for java 11 -->
+      <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+      <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
+      <jaxb-runtime.version>2.4.0-b180830.0438</jaxb-runtime.version>
+
+      <jackson2Version>2.14.2</jackson2Version>
+
+      <log4j.version>2.21.1</log4j.version>
+      <slf4jVersion>1.7.36</slf4jVersion>
+
+   </properties>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+         </plugin>
+
+         <plugin>
+            <groupId>com.jolira</groupId>
+            <artifactId>onejar-maven-plugin</artifactId>
+            <version>1.4.4</version>
+            <executions>
+               <execution>
+                  <configuration>
+                     <mainClass>org.opennms.test.application.datagram.syslog.Main</mainClass>
+                     <onejarVersion>0.97</onejarVersion>
+                     <attachToBuild>true</attachToBuild>
+                     <!--
+                        <filename>${project.artifactId}-${project.version}-onejar.jar</filename> -->
+                  </configuration>
+                  <goals>
+                     <goal>one-jar</goal>
+                  </goals>
+               </execution>
+            </executions>
+         </plugin>
+
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.4.2</version>
+            <configuration>
+               <archive>
+                  <manifest>
+                     <addClasspath>true</addClasspath>
+                     <mainClass>org.opennms.test.application.datagram.syslog.Main</mainClass>
+                  </manifest>
+               </archive>
+            </configuration>
+
+         </plugin>
+
+
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+            <version>2.4</version>
+            <executions>
+               <execution>
+                  <id>xjc</id>
+                  <goals>
+                     <goal>xjc</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <outputDirectory>${project.build.directory}/generated-sources/jaxb</outputDirectory>
+               <sources>
+                  <source>src/main/resources/event.xsd</source>
+               </sources>
+            </configuration>
+            <dependencies>
+               <dependency>
+                  <groupId>org.glassfish.jaxb</groupId>
+                  <artifactId>jaxb-xjc</artifactId>
+                  <version>2.3.2</version>
+               </dependency>
+               <dependency>
+                  <groupId>com.sun.activation</groupId>
+                  <artifactId>jakarta.activation</artifactId>
+                  <version>1.2.1</version>
+               </dependency>
+            </dependencies>
+
+         </plugin>
+
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.6.0</version>
+            <executions>
+               <execution>
+                  <id>add-source</id>
+                  <phase>generate-sources</phase>
+                  <goals>
+                     <goal>add-source</goal>
+                  </goals>
+                  <configuration>
+                     <sources>
+                        <source>${project.build.directory}/generated-sources/jaxb</source>
+
+                     </sources>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+         
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+               <testFailureIgnore>true</testFailureIgnore>
+               <excludes>
+                  <!-- prevent tests running in this package. These are manual tests -->
+                  <exclude>**/manual/*.java</exclude>
+               </excludes>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies>
+
+
+      <!-- dependencies for java 11 jaxb -->
+      <dependency>
+         <groupId>javax.annotation</groupId>
+         <artifactId>javax.annotation-api</artifactId>
+         <version>${javax.annotation-api.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>javax.xml.bind</groupId>
+         <artifactId>jaxb-api</artifactId>
+         <version>${jaxb-api.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.glassfish.jaxb</groupId>
+         <artifactId>jaxb-runtime</artifactId>
+         <version>${jaxb-runtime.version}</version>
+      </dependency>
+
+      <!-- logging dependencies -->
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-api</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-web</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>${slf4jVersion}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>${jackson2Version}</version>
+      </dependency>
+
+      <!-- jersey client -->
+      <dependency>
+         <groupId>org.glassfish.jersey.core</groupId>
+         <artifactId>jersey-client</artifactId>
+         <version>2.25.1</version>
+      </dependency>
+      <dependency>
+         <groupId>org.glassfish.jersey.media</groupId>
+         <artifactId>jersey-media-json-jackson</artifactId>
+         <version>2.25.1</version>
+      </dependency>
+      <dependency>
+         <groupId>org.glassfish.jersey.media</groupId>
+         <artifactId>jersey-media-jaxb</artifactId>
+         <version>2.25.1</version>
+      </dependency>
+
+
+      <!-- junit dependencies -->
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${junit.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.hamcrest</groupId>
+         <artifactId>hamcrest-core</artifactId>
+         <version>${hamcrest-core.version}</version>
+      </dependency>
+   </dependencies>
+
+
+</project>
+

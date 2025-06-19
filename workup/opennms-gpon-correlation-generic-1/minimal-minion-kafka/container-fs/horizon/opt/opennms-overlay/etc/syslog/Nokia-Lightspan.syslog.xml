@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<!-- Syslog message match definitions for Nokia-Lightspan -->
+<syslogd-configuration-group>
+
+   <!-- note that these matches depend on nokia syslog parsing in syslogd-grok-patterns.txt -->
+   
+   <ueiList>
+   
+      <!-- ********************************************************************************************* -->
+      <!-- logs generating critical, major, minor, warning, cleared, indeterminate alarms at OLT for ONT -->
+      <!-- these events got through event translator to create alarms against the ONT                    -->
+      <!-- ********************************************************************************************* -->
+      
+      <!-- critical -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:critical,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/critical</uei>
+      </ueiMatch>
+      
+      <!-- major -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:major,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/major</uei>
+      </ueiMatch>
+      
+      <!-- minor -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:minor,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/minor</uei>
+      </ueiMatch>
+      
+      <!-- warning -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:warning,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/warning</uei>
+      </ueiMatch>
+ 
+      <!-- cleared -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:cleared,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/cleared</uei>
+      </ueiMatch>
+ 
+       <!-- indeterminate -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:indeterminate,alarm-text:((?:.*?)Serial-Number=(.*?),(?:.*)CT-Name=(.*))" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         <parameter-assignment matching-group="8" parameter-name="Serial-Number"/>
+         <parameter-assignment matching-group="9" parameter-name="CT-Name"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/ont-olt/Syslog/alarm/indeterminate</uei>
+      </ueiMatch>
+
+      <!-- ************************************************************************************** -->
+      <!-- logs generating critical, major, minor, warning, cleared, indeterminate alarms for OLT -->
+      <!-- these events drive alarms in the OLT itself                                            -->
+      <!-- ************************************************************************************** -->
+      
+      <!-- critical -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:critical,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/critical</uei>
+      </ueiMatch>
+      
+      <!-- major -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:major,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/major</uei>
+      </ueiMatch>
+      
+      <!-- minor -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:minor,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/minor</uei>
+      </ueiMatch>
+      
+      <!-- warning -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:warning,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/warning</uei>
+      </ueiMatch>
+ 
+      <!-- cleared -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:cleared,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/cleared</uei>
+      </ueiMatch>
+ 
+       <!-- indeterminate -->
+      <ueiMatch>
+         <process-match expression="^alarm_logic_app$" />
+         
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),ENTITY_NAME:(.*?),ENTITY_TYPE:(.*?),alarm-type-id:(.*?),event-time:(.*?),perceived-severity:indeterminate,alarm-text:(.*)" />
+
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="ENTITY_NAME"/>
+         <parameter-assignment matching-group="4" parameter-name="ENTITY_TYPE"/>
+         <parameter-assignment matching-group="5" parameter-name="alarm-type-id"/>
+         <parameter-assignment matching-group="6" parameter-name="event-time"/>
+         <parameter-assignment matching-group="7" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/indeterminate</uei>
+      </ueiMatch>
+ 
+      <!-- ************************************************* -->
+      <!-- match for all generic events which are not alarms -->
+      <!-- ************************************************* -->
+       <ueiMatch>
+
+         <match type="regex" expression="APP_VERSION:(.*?),MODULE_NAME:(.*?),(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="APP_VERSION"/>
+         <parameter-assignment matching-group="2" parameter-name="MODULE_NAME"/>
+         <parameter-assignment matching-group="3" parameter-name="alarm-text"/>
+         
+         <uei>uei.opennms.org/Nokia/Lightspan/olt/Syslog</uei>
+      </ueiMatch>
+ 
+   </ueiList>
+</syslogd-configuration-group>

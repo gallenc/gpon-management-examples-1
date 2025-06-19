@@ -1,0 +1,132 @@
+# original copied from /features/events/syslog/src/main/resources/org/opennms/netmgt/syslogd/grok-patterns.txt
+# Note: Ordering is important in this file. Patterns should be ordered from most specific to least specific. The first
+# pattern found to match will be the one used.
+
+# Match Calix
+#############
+# Feb 28 16:35:11 gla1209-olt-1 notfmgrd[6201]: [1][1][A][6201] [23] nm_handle_events.c.412: Id:8004, Syslog-Severity:6, Perceived-Severity:CLEAR, Name:pppoe-session-termination, Category:GENERAL Cause:Session Terminated, Details:Server initiated session termination. Mac[a0:b5:3c:09:f5:7d], Xpath:/config/system/ont[ont-id='156458']/interface/ont-ethernet[port='g1']/vlan[vlan-id='3004']/c-vlan[c-vlan-id='901'] Address:/interfaces/interface[name='156458/g1']/vlan[vlan-id='3004']/c-vlan[c-vlan-id='901'], Primary-element:NULL, Value:NULL, Verb:NULL, Session:0, Login:NULL, IpAddress:NULL, SrcManager:NULL, Secondary-element:NULL
+
+# note facilityPriority will have value without facility
+# note setting arbitrary params is not supported yet %{STRING:paramCalexHeader} SyslogMessage.java 393
+
+# RFC 3164 with messageId, time (this matches messages without pri)
+#%{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:ignore}, Syslog-Severity:%{INT:facilityPriority}, %{STRING:message}
+
+# Match calix with pri but use facilityPriority field not pri for message priority
+<%{STRING:ignore}>%{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:ignore}, Syslog-Severity:%{INT:facilityPriority}, %{STRING:message}
+
+# Match Nokia
+#############
+# Match Nokia / Alcatel - no space month
+# Feb 28 16:35:13 LT1-blk1-olt-301 - APP_NAME:alarm_logic_app,APP_VERSION:2212.640,MODULE_NAME:alarm,ENTITY_NAME:ALCLFCA45C31,ENTITY_TYPE:rssi-onu,alarm-type-id:onu-upstream-rx-power-exceed-threshold,event-time:2024-02-28T16:35:13+00:00,perceived-severity:minor,alarm-text:low-alarm < onu-upstream-rx-power(-31.5 dBm) < low-warning, OLT xFP operational limits exceeded
+
+# RFC 3164 with time - no space month
+#%{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} - APP_NAME:%{NOSPACE:processName},%{STRING:message}
+
+# match nokia with pri
+<%{STRING:ignore}>%{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} - APP_NAME:%{NOSPACE:processName},%{STRING:message}
+
+#############
+
+# Support for Cisco syslog message patterns
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}: %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{NOSPACE:ignore}: %{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction} %{STRING:timezone}: %{STRING:message}
+#<%{INT:facilityPriority}>%{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction} %{STRING:timezone}:%{WHITESPACE:ignore}%{NOSPACE:ignore}: %{NOSPACE:ignore}:%{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction} %{STRING:timezone}: %{NOSPACE:ignore}: %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{NOSPACE:ignore}: %{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}: %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction} %{STRING:timezone}: %{STRING:message}
+
+# RFC 3164 with messageId, time
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164 with time
+#<%{INT:facilityPriority}> %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}> %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+
+# RFC 3164/ISO8601 date with time, secondFraction, timezone
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date with time, timezone
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date with time
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+
+# RFC 3164/ISO8601 date with messageId, time, secondFraction, timezone
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date with messageId, time, timezone
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date with messageId, time
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 3164/ISO8601 date with messageId
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} [%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{NOSPACE:processName}: %{STRING:message}
+#<%{INT:facilityPriority}>%{NOSPACE:messageId}: %{INT:year}-%{INT:month}-%{INT:day} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+
+# RFC 5424 with secondFraction
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:processName} %{STRING:processId} %{STRING:messageId} - %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:processName} %{STRING:processId} %{STRING:messageId} %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+# RFC 5424
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:processName} %{STRING:processId} %{STRING:messageId} - %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:processName} %{STRING:processId} %{STRING:messageId} %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:version} %{INT:year}-%{INT:month}-%{INT:day}T%{INT:hour}:%{INT:minute}:%{INT:second}%{STRING:timezone} %{HOSTNAMEORIP:hostname} %{STRING:message}
+
+
+# Cisco variant of RFC 3164 with year and colon after time
+#<%{INT:facilityPriority}> %{MONTH:month} %{INT:day} %{INT:year} %{INT:hour}:%{INT:minute}:%{INT:second}: %{STRING:message}
+
+
+# Netgear variant of RFC 3164 with day of week and no hostname or process info
+#<%{INT:facilityPriority}> %{STRING:dayofweek}, %{INT:year}-%{INT:month}-%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} - %{STRING:message}
+
+# Cisco syslog: https://www.cisco.com/c/en/us/td/docs/routers/access/wireless/software/guide/SysMsgLogging.html#wp1054470
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{NOSPACE:parmComponentId}:%{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction} : %{NOSPACE:processName}[%{INT:processId}]: %{STRING:message}
+#<%{INT:facilityPriority}>: %{INT:year} %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{STRING:timezone}: %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{STRING:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}: %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year} %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{STRING:timezone} *%{HOSTNAME:hostname}* %{STRING:message}
+#<%{INT:facilityPriority}> %{INT:year} %{MONTH:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second} %{STRING:timezone} %{STRING:message}
+
+# see issue HZN-1504
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{CHAR:ignore}%{MONTH:month}%{WHITESPACE:ignore}%{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}: %{STRING:message}
+#<%{INT:facilityPriority}>%{INT:parmSequenceNum}: %{CHAR:ignore}%{STRING:month} %{INT:day} %{INT:hour}:%{INT:minute}:%{INT:second}.%{INT:secondFraction}: %{STRING:message}
+
+# Note: This pattern '%{STRING:message}' should always come last as it will greedily match anything. If a pattern is
+# placed after this one it will never be matched since this pattern matches anything.
+%{STRING:message}

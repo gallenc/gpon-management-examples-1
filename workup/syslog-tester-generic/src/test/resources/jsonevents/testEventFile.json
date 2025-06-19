@@ -1,0 +1,384 @@
+{
+    "count": 10,
+    "totalCount": 9106,
+    "offset": 0,
+    "event": [
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 15083,
+            "nodeId": 5,
+            "nodeLabel": "LT1-blk1-olt-301",
+            "uei": "uei.opennms.org/Nokia/Lightspan/olt/Syslog/alarm/minor",
+            "time": 1709156113000,
+            "host": "horizon",
+            "source": "syslogd",
+            "ipAddress": "172.20.0.150",
+            "parameters": [
+                {
+                    "name": "hostname",
+                    "value": "LT1-blk1-olt-301",
+                    "type": "string"
+                },
+                {
+                    "name": "rawSyslogmessage",
+                    "value": "",
+                    "type": "string"
+                },
+                {
+                    "name": "syslogmessage",
+                    "value": "APP_VERSION:2212.640,MODULE_NAME:alarm,ENTITY_NAME:ALCLFCA45C31,ENTITY_TYPE:rssi-onu,alarm-type-id:onu-upstream-rx-power-exceed-threshold,event-time:2024-02-28T16:35:13+00:00,perceived-severity:minor,alarm-text:low-alarm < onu-upstream-rx-power(-31.5 dBm) < low-warning, OLT xFP operational limits exceeded",
+                    "type": "string"
+                },
+                {
+                    "name": "severity",
+                    "value": "Unknown",
+                    "type": "string"
+                },
+                {
+                    "name": "timestamp",
+                    "value": "Feb 28 21:35:13",
+                    "type": "string"
+                },
+                {
+                    "name": "process",
+                    "value": "alarm_logic_app",
+                    "type": "string"
+                },
+                {
+                    "name": "service",
+                    "value": "unknown",
+                    "type": "string"
+                },
+                {
+                    "name": "group1",
+                    "value": "2212.640",
+                    "type": "string"
+                },
+                {
+                    "name": "group2",
+                    "value": "alarm",
+                    "type": "string"
+                },
+                {
+                    "name": "group3",
+                    "value": "ALCLFCA45C31",
+                    "type": "string"
+                },
+                {
+                    "name": "group4",
+                    "value": "rssi-onu",
+                    "type": "string"
+                },
+                {
+                    "name": "group5",
+                    "value": "onu-upstream-rx-power-exceed-threshold",
+                    "type": "string"
+                },
+                {
+                    "name": "group6",
+                    "value": "2024-02-28T16:35:13+00:00",
+                    "type": "string"
+                },
+                {
+                    "name": "group7",
+                    "value": "low-alarm < onu-upstream-rx-power(-31.5 dBm) < low-warning, OLT xFP operational limits exceeded",
+                    "type": "string"
+                },
+                {
+                    "name": "APP_VERSION",
+                    "value": "2212.640",
+                    "type": "string"
+                },
+                {
+                    "name": "MODULE_NAME",
+                    "value": "alarm",
+                    "type": "string"
+                },
+                {
+                    "name": "ENTITY_NAME",
+                    "value": "ALCLFCA45C31",
+                    "type": "string"
+                },
+                {
+                    "name": "ENTITY_TYPE",
+                    "value": "rssi-onu",
+                    "type": "string"
+                },
+                {
+                    "name": "alarm-type-id",
+                    "value": "onu-upstream-rx-power-exceed-threshold",
+                    "type": "string"
+                },
+                {
+                    "name": "event-time",
+                    "value": "2024-02-28T16:35:13+00:00",
+                    "type": "string"
+                },
+                {
+                    "name": "alarm-text",
+                    "value": "low-alarm < onu-upstream-rx-power(-31.5 dBm) < low-warning, OLT xFP operational limits exceeded",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722952219922,
+            "description": "<p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: onu-upstream-rx-power-exceed-threshold alarm-text: low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded<br>\n         Node ID: 5<br>\n         Host: LT1-blk1-olt-301<br>\n         Interface: 172.20.0.150 <br>\n         Process: alarm_logic_app <br>\n         PID:  <br>\n         Severity: Minor <br>\n         Process:  <br>\n         Service (facility):  <br>\n         <br>\n         \n         APP_VERSION: 2212.640 <br>\n         MODULE_NAME: alarm <br>\n         ENTITY_NAME: ALCLFCA45C31 <br>\n         ENTITY_TYPE: rssi-onu <br>\n         alarm-type-id: onu-upstream-rx-power-exceed-threshold <br>\n         event-time: 2024-02-28T16:35:13+00:00 <br>\n         perceived-severity:  <br>\n         alarm-text: low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded <br>\n         Serial-Number:  <br>\n         CT-Name:  <br>\n\n         <br>\n         Message: APP_VERSION:2212.640,MODULE_NAME:alarm,ENTITY_NAME:ALCLFCA45C31,ENTITY_TYPE:rssi-onu,alarm-type-id:onu-upstream-rx-power-exceed-threshold,event-time:2024-02-28T16:35:13+00:00,perceived-severity:minor,alarm-text:low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded <br>\n         <br>\n         Raw Syslog Message:  <br>\n         </p>\n         <br>\n         All Params: hostname=&#34;LT1-blk1-olt-301&#34; rawSyslogmessage=&#34;&#34; syslogmessage=&#34;APP_VERSION:2212.640,MODULE_NAME:alarm,ENTITY_NAME:ALCLFCA45C31,ENTITY_TYPE:rssi-onu,alarm-type-id:onu-upstream-rx-power-exceed-threshold,event-time:2024-02-28T16:35:13+00:00,perceived-severity:minor,alarm-text:low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded&#34; severity=&#34;Unknown&#34; timestamp=&#34;Feb 28 21:35:13&#34; process=&#34;alarm_logic_app&#34; service=&#34;unknown&#34; group1=&#34;2212.640&#34; group2=&#34;alarm&#34; group3=&#34;ALCLFCA45C31&#34; group4=&#34;rssi-onu&#34; group5=&#34;onu-upstream-rx-power-exceed-threshold&#34; group6=&#34;2024-02-28T16:35:13+00:00&#34; group7=&#34;low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded&#34; APP_VERSION=&#34;2212.640&#34; MODULE_NAME=&#34;alarm&#34; ENTITY_NAME=&#34;ALCLFCA45C31&#34; ENTITY_TYPE=&#34;rssi-onu&#34; alarm-type-id=&#34;onu-upstream-rx-power-exceed-threshold&#34; event-time=&#34;2024-02-28T16:35:13+00:00&#34; alarm-text=&#34;low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded&#34; <br>\n         </p>",
+            "logMessage": "\n         <p>Nokia/Lightspan Syslog OLT Alarm alarm-type-id: onu-upstream-rx-power-exceed-threshold alarm-text: low-alarm &lt; onu-upstream-rx-power(-31.5 dBm) &lt; low-warning, OLT xFP operational limits exceeded</p>\n      ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "MINOR"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7969,
+            "nodeId": 115,
+            "nodeLabel": "ket1-olt-1",
+            "uei": "uei.opennms.org/internal/provisiond/nodeScanCompleted",
+            "time": 1722349611834,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "foreignSource",
+                    "value": "gpon3",
+                    "type": "string"
+                },
+                {
+                    "name": "foreignId",
+                    "value": "ket1-olt-1",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722349611836,
+            "description": "A message from the Provisiond NodeScan lifecycle that a NodeScan has completed:\n            <p>The Node with Id: 115; ForeignSource: gpon3; ForeignId:ket1-olt-1 has\n            completed.</p>\n            Typically the result of a request of an import request or a scheduled/user forced rescan.",
+            "logMessage": "\n            <p>The Node with Id: 115; ForeignSource: gpon3; ForeignId:ket1-olt-1 has\n            completed.</p>\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "NORMAL"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7970,
+            "nodeId": 112,
+            "nodeLabel": "inv2484-olt-3",
+            "uei": "uei.opennms.org/internal/provisiond/nodeScanCompleted",
+            "time": 1722349612854,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "foreignSource",
+                    "value": "gpon3",
+                    "type": "string"
+                },
+                {
+                    "name": "foreignId",
+                    "value": "inv2484-olt-3",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722349612856,
+            "description": "A message from the Provisiond NodeScan lifecycle that a NodeScan has completed:\n            <p>The Node with Id: 112; ForeignSource: gpon3; ForeignId:inv2484-olt-3 has\n            completed.</p>\n            Typically the result of a request of an import request or a scheduled/user forced rescan.",
+            "logMessage": "\n            <p>The Node with Id: 112; ForeignSource: gpon3; ForeignId:inv2484-olt-3 has\n            completed.</p>\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "NORMAL"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7971,
+            "nodeId": 113,
+            "nodeLabel": "ips192-olt-1",
+            "uei": "uei.opennms.org/internal/provisiond/nodeScanCompleted",
+            "time": 1722349613307,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "foreignSource",
+                    "value": "gpon3",
+                    "type": "string"
+                },
+                {
+                    "name": "foreignId",
+                    "value": "ips192-olt-1",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722349613309,
+            "description": "A message from the Provisiond NodeScan lifecycle that a NodeScan has completed:\n            <p>The Node with Id: 113; ForeignSource: gpon3; ForeignId:ips192-olt-1 has\n            completed.</p>\n            Typically the result of a request of an import request or a scheduled/user forced rescan.",
+            "logMessage": "\n            <p>The Node with Id: 113; ForeignSource: gpon3; ForeignId:ips192-olt-1 has\n            completed.</p>\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "NORMAL"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7972,
+            "nodeId": 114,
+            "nodeLabel": "ips192-olt-3",
+            "uei": "uei.opennms.org/internal/provisiond/nodeScanCompleted",
+            "time": 1722349614267,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "foreignSource",
+                    "value": "gpon3",
+                    "type": "string"
+                },
+                {
+                    "name": "foreignId",
+                    "value": "ips192-olt-3",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722349614269,
+            "description": "A message from the Provisiond NodeScan lifecycle that a NodeScan has completed:\n            <p>The Node with Id: 114; ForeignSource: gpon3; ForeignId:ips192-olt-3 has\n            completed.</p>\n            Typically the result of a request of an import request or a scheduled/user forced rescan.",
+            "logMessage": "\n            <p>The Node with Id: 114; ForeignSource: gpon3; ForeignId:ips192-olt-3 has\n            completed.</p>\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "NORMAL"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7973,
+            "nodeId": 116,
+            "nodeLabel": "ket1-olt-3",
+            "uei": "uei.opennms.org/nodes/nodeCategoryMembershipChanged",
+            "time": 1722353317844,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "nodelabel",
+                    "value": "ket1-olt-3",
+                    "type": "string"
+                },
+                {
+                    "name": "categoriesAdded",
+                    "value": "OLT",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722353317850,
+            "description": "<p>Node (ket1-olt-3) has changed its Category\n          membership and deleted () and added (OLT).</p>",
+            "logMessage": "\n            Node category membership has changed for node (ket1-olt-3).\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "WARNING"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7974,
+            "nodeId": 118,
+            "nodeLabel": "lec191-olt-1",
+            "uei": "uei.opennms.org/nodes/nodeCategoryMembershipChanged",
+            "time": 1722353322667,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "nodelabel",
+                    "value": "lec191-olt-1",
+                    "type": "string"
+                },
+                {
+                    "name": "categoriesAdded",
+                    "value": "OLT",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722353322734,
+            "description": "<p>Node (lec191-olt-1) has changed its Category\n          membership and deleted () and added (OLT).</p>",
+            "logMessage": "\n            Node category membership has changed for node (lec191-olt-1).\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "WARNING"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7977,
+            "nodeId": 122,
+            "nodeLabel": "lec208-olt-3",
+            "uei": "uei.opennms.org/nodes/nodeCategoryMembershipChanged",
+            "time": 1722353322722,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "nodelabel",
+                    "value": "lec208-olt-3",
+                    "type": "string"
+                },
+                {
+                    "name": "categoriesAdded",
+                    "value": "OLT",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722353322789,
+            "description": "<p>Node (lec208-olt-3) has changed its Category\n          membership and deleted () and added (OLT).</p>",
+            "logMessage": "\n            Node category membership has changed for node (lec208-olt-3).\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "WARNING"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7975,
+            "nodeId": 121,
+            "nodeLabel": "lec208-olt-1",
+            "uei": "uei.opennms.org/nodes/nodeCategoryMembershipChanged",
+            "time": 1722353322744,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "nodelabel",
+                    "value": "lec208-olt-1",
+                    "type": "string"
+                },
+                {
+                    "name": "categoriesAdded",
+                    "value": "OLT",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722353322779,
+            "description": "<p>Node (lec208-olt-1) has changed its Category\n          membership and deleted () and added (OLT).</p>",
+            "logMessage": "\n            Node category membership has changed for node (lec208-olt-1).\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "WARNING"
+        },
+        {
+            "serviceType": null,
+            "ifIndex": null,
+            "id": 7976,
+            "nodeId": 111,
+            "nodeLabel": "inv2484-olt-1",
+            "uei": "uei.opennms.org/nodes/nodeCategoryMembershipChanged",
+            "time": 1722353322746,
+            "source": "Provisiond",
+            "parameters": [
+                {
+                    "name": "nodelabel",
+                    "value": "inv2484-olt-1",
+                    "type": "string"
+                },
+                {
+                    "name": "categoriesAdded",
+                    "value": "OLT",
+                    "type": "string"
+                }
+            ],
+            "createTime": 1722353322783,
+            "description": "<p>Node (inv2484-olt-1) has changed its Category\n          membership and deleted () and added (OLT).</p>",
+            "logMessage": "\n            Node category membership has changed for node (inv2484-olt-1).\n        ",
+            "log": "Y",
+            "display": "Y",
+            "severity": "WARNING"
+        }
+    ]
+}

@@ -1,0 +1,670 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "opennms-api",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<event>\n\n    <host>host</host>\n    <severity>SEVERE</severity>\n    <uei>org.opennms.uei.serviceProblemAlarm</uei>\n    <source>SPMInterface</source>\n    <description>Hello first problem</description>\n    <!-- <time>2020-04-08T04:47:37.331-04:00</time> -->\n     <!--      <descr>this:descrYYY</descr> -->\n    <logmsg>spm interface update.111</logmsg>\n    <parms>\n        <parm>\n            <parmName>this:parmNameXXX</parmName>\n            <value>this:value</value>\n            <type>string</type>\n        </parm>\n    </parms>\n\n</event>"
+                        }
+                    },
+                    "id": "rester-6",
+                    "name": "create-event-xml"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/serviceProblem/update\",\n\t\"source\": \"ServiceProblemScript\",\n\t\"host\": \"host\",\n\t\"severity\": \"MAJOR\",\n\t\"descr\": \"if ommitted the default description is used from event definition\",\n\t\"logmsg\": {\n\t\t\"value\": \"this is hre value of the log message into the log\"\n\t},\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"url\",\n\t\t\t\"value\": \"http://localhost:8980/opennms/rtc/post/Network+Interfaces\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-7",
+                    "name": "exampleNewEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-8",
+                    "name": "getEvents"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/internal/reloadDaemonConfig\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"daemonName\",\n\t\t\t\"value\": \"Alarmd\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-9",
+                    "name": "reloadAlarmdConfigEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/internal/reloadDaemonConfig\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"daemonName\",\n\t\t\t\"value\": \"BSFNBI\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-10",
+                    "name": "reloadBSFAlarmForwarderConfigEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/internal/reloadDaemonConfig\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"daemonName\",\n\t\t\t\"value\": \"Eventd\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-11",
+                    "name": "reloadEventdConfigEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/internal/reloadDaemonConfig\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"daemonName\",\n\t\t\t\"value\": \"Scriptd\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-12",
+                    "name": "reloadScriptdConfigEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/bsm/serviceOperationalStatusChanged\",\n\t\n    \"severity\" : \"Indeterminate\",\n\n\t\"parms\": [\n\t\t\t{\n\t\t\t\"parmName\": \"businessServiceId\",\n\t\t\t\"value\": \"ServiceIdxxx\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"businessServiceName\",\n\t\t\t\"value\": \"test Service Problem\"\n\t\t},\n\t\t\t\t{\n\t\t\t\"parmName\": \"prevSeverityLabel\",\n\t\t\t\"value\": \"test Service Problem\"\n\t\t},\n\t\t\t{\n\t\t\t\"parmName\": \"newSeverityLabel\",\n\t\t\t\"value\": \"test Root cause\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-13",
+                    "name": "serviceOperationalStatusChangedEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/bsm/serviceProblem\",\n\t\n    \"severity\" : \"Major\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"businessServiceName\",\n\t\t\t\"value\": \"test Service Problem\"\n\t\t},\t\n\t\t{\n\t\t\t\"parmName\": \"businessServiceId\",\n\t\t\t\"value\": \"ServiceIdxxx\"\n\t\t},\n\t\t\t{\n\t\t\t\"parmName\": \"rootCause\",\n\t\t\t\"value\": \"test Root cause\"\n\t\t}\n\t\t\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-14",
+                    "name": "serviceProblemEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/bsm/serviceProblem\",\n\t\n    \"severity\" : \"Major\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"businessServiceName\",\n\t\t\t\"value\": \"test Service Problem\"\n\t\t},\t\n\t\t{\n\t\t\t\"parmName\": \"businessServiceId\",\n\t\t\t\"value\": \"ServiceIdxxx\"\n\t\t},\n\t\t\t{\n\t\t\t\"parmName\": \"rootCause\",\n\t\t\t\"value\": \"test Root cause\"\n\t\t},\t{\n\t\t\t\"parmName\": \"spmHREF\",\n\t\t\t\"value\": \"http://tmf656-test1.centralus.cloudapp.azure.com:8080/tmf656-spm-simulator-war/tmf-api/serviceProblemManagement/v3/serviceProblem/1\"\n\t\t},\t{\n\t\t\t\"parmName\": \"spmID\",\n\t\t\t\"value\": \"1\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-15",
+                    "name": "serviceProblemEventHref"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/tmf656spm/serviceProblemReply\",\n\t\n    \"severity\" : \"Indeterminate\",\n\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"spmHREF\",\n\t\t\t\"value\": \"http://tmf656-test1.centralus.cloudapp.azure.com:8080/tmf656-spm-simulator-war/tmf-api/serviceProblemManagement/v3/serviceProblem/1\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"spmID\",\n\t\t\t\"value\": \"1\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"spmCorrelationId\",\n\t\t\t\"value\": \"uei.opennms.org/bsm/serviceProblem:1\"\n\t\t}\n\t\t\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-16",
+                    "name": "serviceProblemReplyEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://192.168.92.131:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/bsm/serviceProblemResolved\",\n\t\n    \"severity\" : \"Indeterminate\",\n\n\t\"parms\": [\n\t\t\t{\n\t\t\t\"parmName\": \"businessServiceId\",\n\t\t\t\"value\": \"ServiceIdxxx\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"businessServiceName\",\n\t\t\t\"value\": \"test Service Problem\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-17",
+                    "name": "serviceProblemResolvedEvent"
+                }
+            ]
+        },
+        {
+            "name": "OpenNMS-API",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/alarms/",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Basic YWRtaW46YWRtaW4="
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-1",
+                    "name": "getAlarms"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events/",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Basic YWRtaW46YWRtaW4="
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-2",
+                    "name": "getEvents"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/requisitions",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Basic YWRtaW46YWRtaW4="
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-3",
+                    "name": "getRequisitions"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"uei\": \"uei.opennms.org/Calex/Axos/Syslog/Informational\",\n    \"source\": \"syslogd\",\n    \"host\": \"horizon\",\n\t\"nodeid\":317,\n\t\"severity\": \"NORMAL\",\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"LogName\",\n\t\t\t\"value\": \"high-laser-bias\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"LogCause\",\n\t\t\t\"value\": \"High laser bias.\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"PerceivedSeverity\",\n            \"value\": \"MINOR\"\n        },\n        {\n\t\t\t\"parmName\": \"Details\",\n            \"value\": \"SerialNo=E7D3FA\"\n        },\n        {\n            \"parmName\": \"Xpath\",\n            \"value\": \"/config/system/ont[ont-id='212064']\"\n        }\n\t\t\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-29",
+                    "name": "OLTAlarmClearEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"uei\": \"uei.opennms.org/Calex/Axos/Syslog/Error\",\n    \"source\": \"syslogd\",\n    \"host\": \"horizon\",\n\t\"nodeid\":317,\n\t\"severity\": \"MINOR\",\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"LogName\",\n\t\t\t\"value\": \"high-laser-bias\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"LogCause\",\n\t\t\t\"value\": \"High laser bias.\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"PerceivedSeverity\",\n            \"value\": \"MINOR\"\n        },\n        {\n\t\t\t\"parmName\": \"Details\",\n            \"value\": \"SerialNo=E7D3FA\"\n        },\n        {\n            \"parmName\": \"Xpath\",\n            \"value\": \"/config/system/ont[ont-id='212064']\"\n        }\n\t\t\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-28",
+                    "name": "OLTAlarmRaiseEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/Translator/Calex/Axos/ONT/Alarm/Clear\",\n\t\"source\": \"event-translator\",\n\t\"host\": \"host\",\n\t\"nodeid\":317,\n\t\"severity\": \"CLEARED\",\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"LogName\",\n\t\t\t\"value\": \"high-laser-bias\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"LogCause\",\n\t\t\t\"value\": \"High laser bias.\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-27",
+                    "name": "ontAlarmClearEvent"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"uei\": \"uei.opennms.org/Translator/Calex/Axos/ONT/Alarm/Raise\",\n\t\"source\": \"event-translator\",\n\t\"host\": \"host\",\n\t\"nodeid\":317,\n\t\"severity\": \"MAJOR\",\n\t\"parms\": [\n\t\t{\n\t\t\t\"parmName\": \"LogName\",\n\t\t\t\"value\": \"high-laser-bias\"\n\t\t},\n\t\t{\n\t\t\t\"parmName\": \"LogCause\",\n\t\t\t\"value\": \"High laser bias.\"\n\t\t}\n\t]\n}"
+                        }
+                    },
+                    "id": "rester-26",
+                    "name": "ontAlarmRaiseEvent"
+                }
+            ]
+        },
+        {
+            "name": "OpenNMS-pris",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8000/requisitions/gpon1",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-4",
+                    "name": "getPrisGponRequisition"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8980/opennms/rest/events",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<event>\n    <uei>uei.opennms.org/internal/importer/reloadImport</uei>\n    <parms>\n        <parm>\n            <parmName>url</parmName>\n            <value>http://pris:8000/requisitions/gpon1</value>\n        </parm>\n    </parms>\n</event>"
+                        }
+                    },
+                    "id": "rester-5",
+                    "name": "onmsImportGponRequisitionEvent"
+                }
+            ]
+        },
+        {
+            "name": "tmf656",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/tmf656-spm-simulator-war-0.0.1-SNAPSHOT/tmf-api/serviceProblemManagement/v3/serviceProblem/",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": \"string\",\n  \"href\": \"string\",\n  \"affectedNumberOfServices\": 0,\n  \"category\": \"string\",\n  \"correlationId\": \"string\",\n  \"description\": \"string\",\n  \"impactImportanceFactor\": \"string\",\n  \"originatingSystem\": \"string\",\n  \"priority\": 0,\n  \"problemEscalation\": \"string\",\n  \"reason\": \"string\",\n  \"resolutionDate\": \"2020-04-27T23:58:27.707Z\",\n  \"status\": \"string\",\n  \"statusChangeDate\": \"2020-04-27T23:58:27.707Z\",\n  \"statusChangeReason\": \"string\",\n  \"timeChanged\": \"2020-04-27T23:58:27.707Z\",\n  \"timeRaised\": \"2020-04-27T23:58:27.707Z\",\n  \"affectedLocation\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"role\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  ],\n  \"affectedResource\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"affectedService\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"associatedSLAViolation\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"associatedTroubleTicket\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"correlationId\": \"string\",\n      \"status\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"comment\": [\n    {\n      \"author\": \"string\",\n      \"date\": \"2020-04-27T23:58:27.708Z\",\n      \"system\": \"string\",\n      \"text\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  ],\n  \"extensionInfo\": [\n    {\n      \"name\": \"string\",\n      \"valueType\": \"string\",\n      \"value\": {},\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  ],\n  \"firstAlert\": {\n    \"id\": \"string\",\n    \"href\": \"string\",\n    \"name\": \"string\",\n    \"@baseType\": \"string\",\n    \"@schemaLocation\": \"string\",\n    \"@type\": \"string\",\n    \"@referredType\": \"string\"\n  },\n  \"impactPatterns\": {\n    \"description\": \"string\",\n    \"extensionInfo\": [\n      {\n        \"name\": \"string\",\n        \"valueType\": \"string\",\n        \"value\": {},\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\"\n      }\n    ],\n    \"@baseType\": \"string\",\n    \"@schemaLocation\": \"string\",\n    \"@type\": \"string\"\n  },\n  \"originatorParty\": {\n    \"id\": \"string\",\n    \"href\": \"string\",\n    \"name\": \"string\",\n    \"role\": \"string\",\n    \"@baseType\": \"string\",\n    \"@schemaLocation\": \"string\",\n    \"@type\": \"string\",\n    \"@referredType\": \"string\"\n  },\n  \"parentProblem\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"correlationId\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"relatedEvent\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"eventTime\": \"2020-04-27T23:58:27.709Z\",\n      \"eventType\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"relatedObject\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"relatedParty\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"role\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"responsibleParty\": {\n    \"id\": \"string\",\n    \"href\": \"string\",\n    \"name\": \"string\",\n    \"role\": \"string\",\n    \"@baseType\": \"string\",\n    \"@schemaLocation\": \"string\",\n    \"@type\": \"string\",\n    \"@referredType\": \"string\"\n  },\n  \"rootCauseResource\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"rootCauseService\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"trackingRecord\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"systemId\": \"string\",\n      \"time\": \"2020-04-27T23:58:27.709Z\",\n      \"user\": \"string\",\n      \"extensionInfo\": [\n        {\n          \"name\": \"string\",\n          \"valueType\": \"string\",\n          \"value\": {},\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  ],\n  \"underlyingAlarm\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"changeRequest\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"underlyingProblem\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"correlationId\": \"string\",\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\",\n      \"@referredType\": \"string\"\n    }\n  ],\n  \"@baseType\": \"string\",\n  \"@schemaLocation\": \"string\",\n  \"@type\": \"string\"\n}"
+                        }
+                    },
+                    "id": "rester-18",
+                    "name": "createServiceProblem"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/tmf656-spm-simulator-war-0.0.1-SNAPSHOT/tmf-api/serviceProblemManagement/v3/serviceProblem/1/",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-19",
+                    "name": "getServiceProblem"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/tmf656-spm-simulator-war-0.0.1-SNAPSHOT/tmf-api/serviceProblemManagement/v3/serviceProblem/1",
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-20",
+                    "name": "patchServiceProblem"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/tmf656-spm-simulator-war-0.0.1-SNAPSHOT/tmf-api/serviceProblemManagement/v3/serviceProblem/1",
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-21",
+                    "name": "patchServiceProblem"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8981/opennms/tmf-api/serviceProblemManagement/v3/listener/serviceProblemAttributeValueChangeNotification",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"eventId\": \"1\",\n  \"eventTime\": \"2020-07-28T11:22:57.598Z\",\n  \"eventType\": \"serviceProblemAttributeValueChangeNotification\",\n  \"fieldPath\": \"string\",\n  \"resourcePath\": \"string\",\n  \"event\": {\n    \"serviceProblem\": {\n      \"id\": \"1\",\n      \"href\": \"string\",\n      \"affectedNumberOfServices\": 0,\n      \"category\": \"string\",\n      \"correlationId\": \"string\",\n      \"description\": \"string\",\n      \"impactImportanceFactor\": \"string\",\n      \"originatingSystem\": \"string\",\n      \"priority\": 0,\n      \"problemEscalation\": \"string\",\n      \"reason\": \"string\",\n      \"resolutionDate\": \"2020-07-28T11:22:57.599Z\",\n      \"status\": \"string\",\n      \"statusChangeDate\": \"2020-07-28T11:22:57.600Z\",\n      \"statusChangeReason\": \"string\",\n      \"timeChanged\": \"2020-07-28T11:22:57.600Z\",\n      \"timeRaised\": \"2020-07-28T11:22:57.600Z\",\n      \"affectedLocation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"affectedResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"affectedService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedSLAViolation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedTroubleTicket\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"status\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"comment\": [\n        {\n          \"author\": \"string\",\n          \"date\": \"2020-07-28T11:22:57.601Z\",\n          \"system\": \"string\",\n          \"text\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"extensionInfo\": [\n        {\n          \"name\": \"string\",\n          \"valueType\": \"string\",\n          \"value\": {\n            \"anyStr\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"firstAlert\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"impactPatterns\": {\n        \"description\": \"string\",\n        \"extensionInfo\": [\n          {\n            \"name\": \"string\",\n            \"valueType\": \"string\",\n            \"value\": {\n              \"anyStr\": \"string\"\n            },\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\"\n          }\n        ],\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\"\n      },\n      \"originatorParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"parentProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedEvent\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"eventTime\": \"2020-07-28T11:22:57.602Z\",\n          \"eventType\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedObject\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedParty\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"responsibleParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"rootCauseResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"rootCauseService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"trackingRecord\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"systemId\": \"string\",\n          \"time\": \"2020-07-28T11:22:57.603Z\",\n          \"user\": \"string\",\n          \"extensionInfo\": [\n            {\n              \"name\": \"string\",\n              \"valueType\": \"string\",\n              \"value\": {\n                \"anyStr\": \"string\"\n              },\n              \"@baseType\": \"string\",\n              \"@schemaLocation\": \"string\",\n              \"@type\": \"string\"\n            }\n          ],\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"underlyingAlarm\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"changeRequest\": {\n            \"id\": \"string\",\n            \"href\": \"string\",\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\",\n            \"@referredType\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"underlyingProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  }\n}\n"
+                        }
+                    },
+                    "id": "rester-22",
+                    "name": "serviceProblemAttributeValueChangeNotification"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8981/opennms/tmf-api/serviceProblemManagement/v3/listener/serviceProblemCreateNotification",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"eventId\": \"1\",\n  \"eventTime\": \"2020-07-28T11:22:57.598Z\",\n  \"eventType\": \"serviceProblemCreateNotification\",\n  \"fieldPath\": \"string\",\n  \"resourcePath\": \"string\",\n  \"event\": {\n    \"serviceProblem\": {\n      \"id\": \"1\",\n      \"href\": \"string\",\n      \"affectedNumberOfServices\": 0,\n      \"category\": \"string\",\n      \"correlationId\": \"string\",\n      \"description\": \"string\",\n      \"impactImportanceFactor\": \"string\",\n      \"originatingSystem\": \"string\",\n      \"priority\": 0,\n      \"problemEscalation\": \"string\",\n      \"reason\": \"string\",\n      \"resolutionDate\": \"2020-07-28T11:22:57.599Z\",\n      \"status\": \"string\",\n      \"statusChangeDate\": \"2020-07-28T11:22:57.600Z\",\n      \"statusChangeReason\": \"string\",\n      \"timeChanged\": \"2020-07-28T11:22:57.600Z\",\n      \"timeRaised\": \"2020-07-28T11:22:57.600Z\",\n      \"affectedLocation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"affectedResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"affectedService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedSLAViolation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedTroubleTicket\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"status\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"comment\": [\n        {\n          \"author\": \"string\",\n          \"date\": \"2020-07-28T11:22:57.601Z\",\n          \"system\": \"string\",\n          \"text\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"extensionInfo\": [\n        {\n          \"name\": \"string\",\n          \"valueType\": \"string\",\n          \"value\": {\n            \"anyStr\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"firstAlert\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"impactPatterns\": {\n        \"description\": \"string\",\n        \"extensionInfo\": [\n          {\n            \"name\": \"string\",\n            \"valueType\": \"string\",\n            \"value\": {\n              \"anyStr\": \"string\"\n            },\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\"\n          }\n        ],\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\"\n      },\n      \"originatorParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"parentProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedEvent\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"eventTime\": \"2020-07-28T11:22:57.602Z\",\n          \"eventType\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedObject\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedParty\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"responsibleParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"rootCauseResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"rootCauseService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"trackingRecord\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"systemId\": \"string\",\n          \"time\": \"2020-07-28T11:22:57.603Z\",\n          \"user\": \"string\",\n          \"extensionInfo\": [\n            {\n              \"name\": \"string\",\n              \"valueType\": \"string\",\n              \"value\": {\n                \"anyStr\": \"string\"\n              },\n              \"@baseType\": \"string\",\n              \"@schemaLocation\": \"string\",\n              \"@type\": \"string\"\n            }\n          ],\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"underlyingAlarm\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"changeRequest\": {\n            \"id\": \"string\",\n            \"href\": \"string\",\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\",\n            \"@referredType\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"underlyingProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  }\n}\n"
+                        }
+                    },
+                    "id": "rester-23",
+                    "name": "serviceProblemCreateNotification"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8981/opennms/tmf-api/serviceProblemManagement/v3/listener/serviceProblemInformationRequiredNotification",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"eventId\": \"1\",\n  \"eventTime\": \"2020-07-28T11:22:57.598Z\",\n  \"eventType\": \"serviceProblemInformationRequiredNotification\",\n  \"fieldPath\": \"string\",\n  \"resourcePath\": \"string\",\n  \"event\": {\n    \"serviceProblem\": {\n      \"id\": \"1\",\n      \"href\": \"string\",\n      \"affectedNumberOfServices\": 0,\n      \"category\": \"string\",\n      \"correlationId\": \"string\",\n      \"description\": \"string\",\n      \"impactImportanceFactor\": \"string\",\n      \"originatingSystem\": \"string\",\n      \"priority\": 0,\n      \"problemEscalation\": \"string\",\n      \"reason\": \"string\",\n      \"resolutionDate\": \"2020-07-28T11:22:57.599Z\",\n      \"status\": \"string\",\n      \"statusChangeDate\": \"2020-07-28T11:22:57.600Z\",\n      \"statusChangeReason\": \"string\",\n      \"timeChanged\": \"2020-07-28T11:22:57.600Z\",\n      \"timeRaised\": \"2020-07-28T11:22:57.600Z\",\n      \"affectedLocation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"affectedResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"affectedService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedSLAViolation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedTroubleTicket\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"status\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"comment\": [\n        {\n          \"author\": \"string\",\n          \"date\": \"2020-07-28T11:22:57.601Z\",\n          \"system\": \"string\",\n          \"text\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"extensionInfo\": [\n        {\n          \"name\": \"string\",\n          \"valueType\": \"string\",\n          \"value\": {\n            \"anyStr\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"firstAlert\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"impactPatterns\": {\n        \"description\": \"string\",\n        \"extensionInfo\": [\n          {\n            \"name\": \"string\",\n            \"valueType\": \"string\",\n            \"value\": {\n              \"anyStr\": \"string\"\n            },\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\"\n          }\n        ],\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\"\n      },\n      \"originatorParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"parentProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedEvent\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"eventTime\": \"2020-07-28T11:22:57.602Z\",\n          \"eventType\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedObject\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedParty\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"responsibleParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"rootCauseResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"rootCauseService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"trackingRecord\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"systemId\": \"string\",\n          \"time\": \"2020-07-28T11:22:57.603Z\",\n          \"user\": \"string\",\n          \"extensionInfo\": [\n            {\n              \"name\": \"string\",\n              \"valueType\": \"string\",\n              \"value\": {\n                \"anyStr\": \"string\"\n              },\n              \"@baseType\": \"string\",\n              \"@schemaLocation\": \"string\",\n              \"@type\": \"string\"\n            }\n          ],\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"underlyingAlarm\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"changeRequest\": {\n            \"id\": \"string\",\n            \"href\": \"string\",\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\",\n            \"@referredType\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"underlyingProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  }\n}\n"
+                        }
+                    },
+                    "id": "rester-24",
+                    "name": "serviceProblemInformationRequiredNotification"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8981/opennms/tmf-api/serviceProblemManagement/v3/listener/serviceProblemStateChangeNotification",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept-Charset",
+                                "value": "utf-8"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"eventId\": \"1\",\n  \"eventTime\": \"2020-07-28T11:22:57.598Z\",\n  \"eventType\": \"serviceProblemStateChangeNotification\",\n  \"fieldPath\": \"string\",\n  \"resourcePath\": \"string\",\n  \"event\": {\n    \"serviceProblem\": {\n      \"id\": \"1\",\n      \"href\": \"string\",\n      \"affectedNumberOfServices\": 0,\n      \"category\": \"string\",\n      \"correlationId\": \"string\",\n      \"description\": \"string\",\n      \"impactImportanceFactor\": \"string\",\n      \"originatingSystem\": \"string\",\n      \"priority\": 0,\n      \"problemEscalation\": \"string\",\n      \"reason\": \"string\",\n      \"resolutionDate\": \"2020-07-28T11:22:57.599Z\",\n      \"status\": \"string\",\n      \"statusChangeDate\": \"2020-07-28T11:22:57.600Z\",\n      \"statusChangeReason\": \"string\",\n      \"timeChanged\": \"2020-07-28T11:22:57.600Z\",\n      \"timeRaised\": \"2020-07-28T11:22:57.600Z\",\n      \"affectedLocation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"affectedResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"affectedService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedSLAViolation\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"associatedTroubleTicket\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"status\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"comment\": [\n        {\n          \"author\": \"string\",\n          \"date\": \"2020-07-28T11:22:57.601Z\",\n          \"system\": \"string\",\n          \"text\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"extensionInfo\": [\n        {\n          \"name\": \"string\",\n          \"valueType\": \"string\",\n          \"value\": {\n            \"anyStr\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"firstAlert\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"impactPatterns\": {\n        \"description\": \"string\",\n        \"extensionInfo\": [\n          {\n            \"name\": \"string\",\n            \"valueType\": \"string\",\n            \"value\": {\n              \"anyStr\": \"string\"\n            },\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\"\n          }\n        ],\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\"\n      },\n      \"originatorParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"parentProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedEvent\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"eventTime\": \"2020-07-28T11:22:57.602Z\",\n          \"eventType\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedObject\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"relatedParty\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"responsibleParty\": {\n        \"id\": \"string\",\n        \"href\": \"string\",\n        \"name\": \"string\",\n        \"role\": \"string\",\n        \"@baseType\": \"string\",\n        \"@schemaLocation\": \"string\",\n        \"@type\": \"string\",\n        \"@referredType\": \"string\"\n      },\n      \"rootCauseResource\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"name\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"rootCauseService\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"trackingRecord\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"systemId\": \"string\",\n          \"time\": \"2020-07-28T11:22:57.603Z\",\n          \"user\": \"string\",\n          \"extensionInfo\": [\n            {\n              \"name\": \"string\",\n              \"valueType\": \"string\",\n              \"value\": {\n                \"anyStr\": \"string\"\n              },\n              \"@baseType\": \"string\",\n              \"@schemaLocation\": \"string\",\n              \"@type\": \"string\"\n            }\n          ],\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\"\n        }\n      ],\n      \"underlyingAlarm\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"changeRequest\": {\n            \"id\": \"string\",\n            \"href\": \"string\",\n            \"@baseType\": \"string\",\n            \"@schemaLocation\": \"string\",\n            \"@type\": \"string\",\n            \"@referredType\": \"string\"\n          },\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"underlyingProblem\": [\n        {\n          \"id\": \"string\",\n          \"href\": \"string\",\n          \"correlationId\": \"string\",\n          \"@baseType\": \"string\",\n          \"@schemaLocation\": \"string\",\n          \"@type\": \"string\",\n          \"@referredType\": \"string\"\n        }\n      ],\n      \"@baseType\": \"string\",\n      \"@schemaLocation\": \"string\",\n      \"@type\": \"string\"\n    }\n  }\n}\n"
+                        }
+                    },
+                    "id": "rester-25",
+                    "name": "serviceProblemStateChangeNotification"
+                }
+            ]
+        }
+    ]
+}

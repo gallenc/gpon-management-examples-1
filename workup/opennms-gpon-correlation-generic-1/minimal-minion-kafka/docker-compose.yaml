@@ -1,0 +1,331 @@
+---
+version: '3'
+
+# using fixed ip addresses so opennms provisoning config works
+# to see all network use docker network ls
+# to see config use docker network inspect minimal-minion-kafka_frontend
+# note gateway is 172.20.0.1 
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+volumes:
+  data-postgres: {}
+  data-opennms: {}
+  data-opennms-cfg: {}
+  data-grafana: {}
+
+services:
+  database:
+    image: ${DOCKER_REGISTRY:-docker.io}/postgres:${POSTGRES_VERSION:-14}
+    container_name: database
+    hostname: database
+    environment:
+      TZ: ${TIMEZONE:-America/New_York}
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    command: ["postgres", "-N", "200"]
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 30s
+      retries: 3
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.10
+        
+# see https://github.com/Jasoncheung94/youtube-projects-code/tree/main/postgres_phppgadmin
+# note current latest 7.13.0 needs postgresql 14 as doesn't work with 15
+  phppgadmin:
+    container_name: phppgadmin
+    image: ${DOCKER_REGISTRY:-docker.io}/neimheadh/phppgadmin:${PHP_PG_ADMIN_VERSION:-7.13.0}
+    ports:
+      - "8082:80" 
+    environment:
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=postgres
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.15
+        
+  grafana:
+    image: ${DOCKER_REGISTRY:-docker.io}/grafana/grafana:${GRAFANA_VERSION:-latest}
+    container_name: grafana
+    hostname: grafana
+    environment:
+      TZ: ${TIMEZONE:-America/New_York}
+      GF_SECURITY_ADMIN_PASSWORD: mypass
+      GF_INSTALL_PLUGINS: opennms-opennms-app,grafana-piechart-panel,neocat-cal-heatmap-panel,briangann-datatable-panel
+      GF_SERVER_HTTP_PORT: 3000
+      GF_SERVER_PROTOCOL: http
+# use if running behind nginx
+#      GF_SERVER_DOMAIN: localhost:80
+#      GF_SERVER_ROOT_URL: http://localhost:80/grafana/
+#      GF_SERVER_SERVER_FROM_SUB_PATH: true
+    volumes:
+      - data-grafana:/var/lib/grafana
+      - ./container-fs/grafana/provisioning:/etc/grafana/provisioning/
+      - ./container-fs/grafana/conf/conf.ini:/conf/conf.ini
+    ports:
+      - "3000:3000/tcp"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 100M
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.18
+
+  kafka:
+    image: ${DOCKER_REGISTRY:-docker.io}/confluentinc/cp-kafka:${KAFKA_VERSION:-latest}
+    container_name: kafka
+    hostname: kafka
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT'
+      KAFKA_LISTENERS: 'INTERNAL://kafka:29092,CONTROLLER://kafka:29093,EXTERNAL://0.0.0.0:9092'
+      KAFKA_ADVERTISED_LISTENERS: 'INTERNAL://kafka:29092,EXTERNAL://kafka:9092'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'INTERNAL'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka:29093'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      CLUSTER_ID: 'rkKB84SG2NOYITcxMkSeFw=='
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    ports:
+      - "29092:29092/tcp"
+      - "9092:9092/tcp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.20
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    hostname: kafka-ui
+    depends_on:
+      kafka:
+        condition: service_started
+    environment:
+      TZ: ${TIMEZONE:-America/New_York}
+      KAFKA_CLUSTERS_0_NAME: onms-stack-play
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    ports:
+      - "8080:8080/tcp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.25
+
+  horizon:
+    # image: ${DOCKER_REGISTRY:-docker.io}/${DOCKER_ORG:-opennms}/${HORIZON_OCI:-horizon}:${ONMS_VERSION:-bleeding}
+    image: opennms/horizon:33.0.5-augmented
+    build: ./container-fs/horizon/
+    container_name: horizon
+    hostname: horizon
+    sysctls:
+      net.ipv4.ping_group_range: "0 429496729"
+    depends_on:
+      database:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+    environment:
+      TZ: ${TIMEZONE:-America/New_York}
+      # JAVA_OPTS matches default in container plus enable debugger
+      JAVA_OPTS: -Xmx1024m -XX:MaxMetaspaceSize=512m -agentlib:jdwp=transport=dt_socket,server=y,address=*:8001,suspend=n
+    volumes:
+      - data-opennms:/opennms-data
+      - data-opennms-cfg:/opt/opennms/etc
+      - ./container-fs/horizon/opt/opennms/deploy:/opt/opennms/deploy
+      - ./container-fs/horizon/opt/opennms-overlay:/opt/opennms-overlay
+      - ./container-fs/horizon/etc/conf.d/confd.toml:/etc/confd/confd.toml
+      - ./container-fs/horizon/hosts:/etc/hosts  # temp remove
+    command: ["-s"]
+    ports:
+      - "8101:8101/tcp"   # karaf ssh
+      - "8980:8980/tcp"   # web ui
+      - "10162:1162/udp"  # snmp trap
+      - "10514:10514/udp" # syslog
+      - "8001:8001" # JPDA debugging port
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "-I", "http://localhost:8980/opennms/login.jsp" ]
+      interval: 1m
+      timeout: 5s
+      retries: 3
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.30
+
+  minion:
+    image: ${DOCKER_REGISTRY:-docker.io}/${DOCKER_ORG:-opennms}/${MINION_OCI:-minion}:${ONMS_VERSION:-bleeding}
+    container_name: minion
+    hostname: minion
+    sysctls:
+      net.ipv4.ping_group_range: "0 429496729"
+    environment:
+      TZ: ${TIMEZONE:-America/New_York}
+      JAVA_MIN_MEM: 512M
+      JAVA_MAX_MEM: 2048M
+    volumes:
+      - ./container-fs/minion/opt/minion/minion-config.yaml:/opt/minion/minion-config.yaml
+    command: ["-f"]
+    healthcheck:
+      test: "/health.sh"
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    ports:
+      - "8201:8201/tcp" # karaf ssh terminal
+      - "1162:1162/udp" # snmp trap
+      - "1514:1514/udp" # syslog
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.50
+        
+  pris:
+    container_name: pris
+    image: ${DOCKER_REGISTRY:-docker.io}/${DOCKER_ORG:-opennms}/${MINION_OCI:-pris}:${PRIS_VERSION:-latest}
+    environment:
+      - TZ=Europe/Berlin
+      - JAVA_OPTS=-XX:+PrintGCDetails -XX:+UnlockExperimentalVMOptions
+    volumes:
+      - ./container-fs/pris/requisitions:/opt/opennms-pris/requisitions
+      - ./container-fs/pris/scriptsteps:/opt/opennms-pris/scriptsteps
+    healthcheck:
+      test: ["CMD", "curl", "-f", "-I", "http://localhost:8000/documentation/index.html"]
+      interval: 30s
+      timeout: 5s
+      retries: 1
+    ports:
+      - "8000:8000"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.35
+        
+# kafka client # wait for horizon to allow kafka to start
+  kafka-client:
+    image: opennms:kafka-client
+    profiles: ["kafka-client"]
+    container_name: kafka-client
+    hostname: kafka-client
+    depends_on:
+      - kafka
+      - horizon
+    volumes:
+      - ./container-fs/kafka-client/kafkaclient.properties:/tmp/kafkaclient.properties
+    #ports:
+    #  - "11161:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.5
+ 
+ # kafka web client
+  kafka-web:
+    image: opennms:kafka-web
+    profiles: ["kafka-client"]
+    container_name: kafka-web
+    hostname: kafka-web
+    depends_on:
+      - kafka
+      - horizon
+    volumes:
+      - ./container-fs/kafka-client/kafkaclient.properties:/tmp/kafkaclient.properties
+    ports:
+      - "8081:8081/tcp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.6
+        
+ # simple log tester
+ # build the syslog-tester jar and place in logtester folder
+ # 
+  logtester:
+    image: openjdk:11
+    container_name: logtester
+    hostname: logtester
+    depends_on:
+      - kafka
+      - horizon
+    volumes:
+      - ./container-fs/logtester/syslog-tester-0.0.1-SNAPSHOT.jar:/tmp/syslog-tester-0.0.1-SNAPSHOT.jar
+    command: java -jar /tmp/syslog-tester-0.0.1-SNAPSHOT.jar server 514
+    ports:
+      - "11514:514/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.7
+
+        
+ # first snmp container
+  netsnmp1:
+    image: polinux/snmpd
+    container_name: netsnmp1
+    hostname: netsnmp1
+    volumes:
+      - ./container-fs/snmp/snmpd.conf:/etc/snmp/snmpd.conf
+    ports:
+      - "11161:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.100
+
+  netsnmp2:
+    image: polinux/snmpd
+    container_name: netsnmp2
+    hostname: netsnmp2
+    volumes:
+      - ./container-fs/snmp/snmpd.conf:/etc/snmp/snmpd.conf
+    ports:
+      - "11261:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.101
+
+  netsnmp3:
+    image: polinux/snmpd
+    container_name: netsnmp3
+    hostname: netsnmp3
+    volumes:
+      - ./container-fs/snmp/snmpd.conf:/etc/snmp/snmpd.conf
+    ports:
+      - "11361:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.102
+        
+  netsnmp4:
+    image: polinux/snmpd
+    container_name: netsnmp4
+    hostname: netsnmp4
+    volumes:
+      - ./container-fs/snmp/snmpd.conf:/etc/snmp/snmpd.conf
+    ports:
+      - "11461:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.103
+        
+  netsnmp5:
+    image: polinux/snmpd
+    container_name: netsnmp5
+    hostname: netsnmp5
+    volumes:
+      - ./container-fs/snmp/snmpd.conf:/etc/snmp/snmpd.conf
+    ports:
+      - "11561:161/udp"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.104
+

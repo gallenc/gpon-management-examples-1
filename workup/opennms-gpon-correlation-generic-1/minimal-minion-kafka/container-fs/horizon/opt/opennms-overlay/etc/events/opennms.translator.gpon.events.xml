@@ -1,0 +1,12 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/Translator/gpon/childCountUpdated</uei>
+      <event-label>Gpon: Child Count Updated Event</event-label>
+      <logmsg dest="logndisplay">Gpon: Updated child count of %parm[assetsUpdated]% assets</logmsg>
+      <descr>Gpon: Parent Count Updated Event - updated child count of %parm[assetsUpdated]% assets
+         &lt;p>The event included the following parameters:&lt;/p> &lt;p>%parm[all]%&lt;/p>
+      </descr>
+
+      <severity>Normal</severity>
+   </event>
+</events>

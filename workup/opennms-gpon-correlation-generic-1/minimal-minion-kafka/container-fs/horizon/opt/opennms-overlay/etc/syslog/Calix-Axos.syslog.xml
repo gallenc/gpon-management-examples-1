@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!-- Syslog message match definitions for Calix-Axos -->
+<syslogd-configuration-group>
+   <ueiList>
+
+      <!-- note that these matches depend on syslog severity obtained from syslogd-grok-patterns.txt -->
+      <ueiMatch>
+
+         <process-match expression="^notfmgrd$" />
+         <severity>Emergency</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Emergency</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Alert</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Alert</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Critical</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Critical</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Error</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Error</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Warning</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Warning</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Notice</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Notice</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Informational</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Informational</uei>
+      </ueiMatch>
+      <ueiMatch>
+         
+         <process-match expression="^notfmgrd$" />
+         <severity>Debug</severity>
+         <match type="regex" expression="Perceived-Severity:(.*?),\sName:(.*?),\sCategory:(.*?)\sCause:(.*?),\sDetails:(.*?),\sXpath:(.*?)\sAddress:(.*?),\s(.*)" />
+         <parameter-assignment matching-group="1" parameter-name="PerceivedSeverity"/>
+         <parameter-assignment matching-group="2" parameter-name="LogName"/>
+         <parameter-assignment matching-group="3" parameter-name="LogCategory"/>
+         <parameter-assignment matching-group="4" parameter-name="LogCause"/>
+         <parameter-assignment matching-group="5" parameter-name="Details"/>
+         <parameter-assignment matching-group="6" parameter-name="Xpath"/>
+         <parameter-assignment matching-group="7" parameter-name="Address"/>
+         <parameter-assignment matching-group="8" parameter-name="AdditionalInfo"/>
+         
+         <uei>uei.opennms.org/Calix/Axos/Syslog/Debug</uei>
+      </ueiMatch>
+
+   </ueiList>
+</syslogd-configuration-group>

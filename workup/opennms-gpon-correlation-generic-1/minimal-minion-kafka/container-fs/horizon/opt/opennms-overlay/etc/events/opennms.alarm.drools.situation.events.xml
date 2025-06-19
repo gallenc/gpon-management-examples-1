@@ -1,0 +1,18 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+   <event>
+      <uei>uei.opennms.org/alarms/drools/situation</uei>
+      <event-label>Alarm: Drools Situation Update</event-label>
+      <logmsg dest="logndisplay">%parm[situationDescr]%</logmsg>
+      <descr>%parm[situationLogMsg]%
+         &lt;p>The event included the following parameters:&lt;/p> &lt;p>%parm[all]%&lt;/p>
+      </descr>
+
+      <severity>Normal</severity>
+      <!-- auto-clean = false so we can see all past events for this situation -->
+      <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%parm[LogName]%" alarm-type="3" auto-clean="false">
+         <update-field field-name="descr" update-on-reduction="true" />
+         <update-field field-name="logmsg" update-on-reduction="true" />
+         <update-field field-name="severity" update-on-reduction="true" />
+      </alarm-data>
+   </event>
+</events>

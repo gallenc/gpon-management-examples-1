@@ -1,0 +1,165 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="Page-1" id="lpnLTRdYzm4OXFZ6302t">
+    <mxGraphModel dx="1298" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-90" value="opennms test framework docker compose project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="240" y="240" width="930" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-89" value="docker compose test configurations" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;verticalAlign=bottom;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="278.75" y="270" width="120" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="g936kvFUL5exV1v3MIdT-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-fAjT1t3zxda8JAW4F-a-9" target="-fAjT1t3zxda8JAW4F-a-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-9" value="gpon inventory&amp;nbsp;&lt;div&gt;.csv&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=12;" parent="1" vertex="1">
+          <mxGeometry x="463.75" y="366" width="110" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-49" value="container environment variables" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fontColor=#FF0000;" parent="1" vertex="1">
+          <mxGeometry x="293.75" y="500" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-110" value="captured scenarios / logs / events" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="90" y="180" width="72.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-88" value="" style="group;" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="445" y="270" width="693.75" height="395" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-68" value="horizon container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="170" y="104.5" width="152.5" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-38" value="minion container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="175" y="310" width="140" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-69" value="pris container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry y="150" width="152.5" height="134.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-70" value="database container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="360" y="190" width="150" height="94.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-1" value="core" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="190" y="114.5" width="110" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-7" value="pris" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="15" y="164.5" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-8" value="Kuwaiba&lt;div&gt;Mapper&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="31.25" y="168.5" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-44" value="&lt;div&gt;Running&lt;/div&gt;&lt;div&gt;config/etc&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="197.5" y="208.5" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-45" value="&lt;div&gt;confd / scripts&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="197.5" y="166.5" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-46" value="confd.yml" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="210" y="134.5" width="70" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-56" value="postgres" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="411.25" y="196.5" width="55" height="54.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="sbTVjomaNUMIlSJmhtsX-88" source="-fAjT1t3zxda8JAW4F-a-2" target="-fAjT1t3zxda8JAW4F-a-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="350" />
+              <mxPoint x="350" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-fAjT1t3zxda8JAW4F-a-2" value="minion" style="rounded=1;whiteSpace=wrap;html=1;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="203.75" y="330" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-74" value="db web admin container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="360" y="100.5" width="152.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-75" value="postgres web admin" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="375" y="120.5" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-77" value="kafka container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="540" y="205" width="152.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-78" value="kafka" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="555" y="225" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-79" value="kafka client container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="540" y="6" width="152.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-80" value="opennms kafka alarm web client" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="555" y="26" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-81" value="grafana container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="168.75" width="152.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-82" value="grafana" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="183.75" y="20" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-83" value="kafka web client container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="541.25" y="100.5" width="152.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-84" value="kafka web client" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="sbTVjomaNUMIlSJmhtsX-88" vertex="1">
+          <mxGeometry x="556.25" y="120.5" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="g936kvFUL5exV1v3MIdT-1" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Kuwaiba&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;container&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;spacingBottom=8;fillColor=none;" vertex="1" parent="sbTVjomaNUMIlSJmhtsX-88">
+          <mxGeometry y="1" width="150" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="g936kvFUL5exV1v3MIdT-2" value="Kuwaiba" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="sbTVjomaNUMIlSJmhtsX-88">
+          <mxGeometry x="20" y="11.5" width="120" height="39.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-92" value="drools rules" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fontColor=#FF0000;" parent="1" vertex="1">
+          <mxGeometry x="293.75" y="350" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-93" value="poller config" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fontColor=#FF0000;" parent="1" vertex="1">
+          <mxGeometry x="293.75" y="400" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-94" value="parser and event config" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fontColor=#FF0000;" parent="1" vertex="1">
+          <mxGeometry x="293.75" y="450" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-95" value="configuration test framework (maven / eclipse based)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="240" y="80" width="930" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-96" value="minion container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="445" y="580" width="140" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-97" value="snmpsim" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="473.75" y="600" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-98" value="syslog scenario replay unit tests" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="258.75" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-99" value="snmp scenario&amp;nbsp;&lt;div&gt;replay unit tests&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="398.75" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-100" value="paxexam unit test injector" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=2;fontColor=#ABABAB;" parent="1" vertex="1">
+          <mxGeometry x="690" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-101" value="opennms event scenario replay unit tests" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-102" value="jboss rules inspector&lt;div&gt;integration tests&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=2;fontColor=#ABABAB;" parent="1" vertex="1">
+          <mxGeometry x="830" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-103" value="vendor docs/mibs" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="90" y="250" width="72.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-104" value="user feedback" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="90" y="320" width="72.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-105" value="issue management" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="90" y="390" width="72.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-106" value="git version control" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=9;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="90" y="460" width="72.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sbTVjomaNUMIlSJmhtsX-107" value="ci/cd test automation" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=2;fontColor=#ABABAB;" parent="1" vertex="1">
+          <mxGeometry x="970" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="g936kvFUL5exV1v3MIdT-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="g936kvFUL5exV1v3MIdT-1" target="-fAjT1t3zxda8JAW4F-a-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g936kvFUL5exV1v3MIdT-5" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;kuwaiba&amp;nbsp;&lt;div&gt;&lt;div&gt;gpon model&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=7;" vertex="1" parent="1">
+          <mxGeometry x="293.75" y="280" width="90" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

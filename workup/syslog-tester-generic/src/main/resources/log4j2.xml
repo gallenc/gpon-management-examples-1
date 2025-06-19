@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+   <!-- Logging Properties -->
+   <Properties>
+      <!-- this sets the output style properties for the log messages -->
+      <!--<Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property> -->
+      <!-- %c{1.} abbraviates package name to sincle characters per segment -->
+      <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] [%c{1.}] %-5level %logger{36} - %msg%n  %X</Property>
+
+   </Properties>
+   <Appenders>
+
+      <!-- <Syslog name="BSD" host="localhost" port="514" protocol="UDP"/> -->
+      <Syslog name="BSD" host="localhost" port="9899" protocol="UDP" appName="MyApp" includeMDC="true" facility="USER" enterpriseNumber="18060"
+         newLine="true" messageId="Audit" id="App" />
+
+      <!-- <Syslog name="RFC5424" format="RFC5424" host="localhost" port="8514" protocol="UDP" appName="MyApp" includeMDC="true" facility="LOCAL0" -->
+
+      <Syslog name="RFC5424" format="RFC5424" host="localhost" port="9899" protocol="UDP" appName="MyApp" includeMDC="true" facility="USER"
+         enterpriseNumber="18060" newLine="true" messageId="Audit" id="App" />
+
+      <!-- https://stackoverflow.com/questions/17947611/log4j2-syslog-appender-and-patternlayout -->
+      <Socket name="SYSLOG" host="localhost" port="9899" protocol="UDP">
+         <PatternLayout
+            pattern="&lt;1&gt;%d{MMM dd HH:mm:ss} ${hostName} appName: {
+      &quot;host&quot;:&quot;${hostName}&quot;,
+      &quot;thread&quot;:&quot;%t&quot;,
+      &quot;level&quot;:&quot;%p&quot;,
+      &quot;logger&quot;:&quot;%c{1}&quot;,
+      &quot;line&quot;:%L,
+      &quot;message&quot;:&quot;%enc{%m}&quot;,
+      &quot;exception&quot;:&quot;%exception&quot;
+      }%n" />
+      </Socket>
+      
+      <Socket name="SYSLOG2" host="localhost" port="9899" protocol="UDP">
+                  <!--Feb 28 16:36:16 se372-olt-5 notfmgrd[6208]: [1][1][A][6208] [23] nm_handle_events.c.412: Id:5031, Syslog-Severity:6, Perceived-Severity:CLEAR, Name:low-rx-opt-pwr-fe, Category:PON Cause:The ONT reports low received optical power from the OLT., Details:SerialNo=AEEF24, Xpath:/config/system/ont[ont-id='382230'] Address:NULL, Primary-element:NULL, Value:NULL, Verb:NULL, Session:0, Login:NULL, IpAddress:NULL, SrcManager:NULL, Secondary-element:NULL  -->
+               <PatternLayout pattern="%msg" />
+      </Socket>
+
+      <Console name="Console" target="SYSTEM_OUT">
+         <PatternLayout pattern="${LOG_PATTERN}" />
+      </Console>
+
+
+
+   </Appenders>
+   <Loggers>
+
+      <Logger name="BSD" additivity="false" level="DEBUG">
+         <AppenderRef ref="Console" />
+         <AppenderRef ref="BSD" />
+      </Logger>
+
+      <Logger name="RFC5424" additivity="false" level="DEBUG">
+         <AppenderRef ref="Console" />
+         <AppenderRef ref="RFC5424" />
+      </Logger>
+      
+      <Logger name="SYSLOG" additivity="false" level="DEBUG">
+         <AppenderRef ref="Console" />
+         <AppenderRef ref="SYSLOG" />
+      </Logger>
+
+
+
+      <!-- this logs to the Consol (System.out) -->
+      <Root level="DEBUG">
+         <AppenderRef ref="Console" />
+      </Root>
+   </Loggers>
+</Configuration>

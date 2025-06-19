@@ -1,0 +1,1 @@
+package org.opennms.rest.client.test.manual;

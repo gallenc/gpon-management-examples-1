@@ -1,0 +1,97 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+   <!-- *************************************************************** -->
+   <!-- Nokia ONT alarms derived from OLT events using event translator -->
+   <!-- *************************************************************** -->
+
+   <!-- Alarm Raise -->
+   <event>
+      <uei>uei.opennms.org/Translator/Nokia/Lightspan/ONT/Alarm/Raise</uei>
+      <event-label>Nokia/Lightspan ONT Alarm Event</event-label>
+      <descr>&lt;p>Nokia/Lightspan ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+
+         &lt;br>
+         &lt;a href=&quot;event/detail.jsp?id=%parm[originalEventId]%&quot;>Original Event ID %parm[originalEventId]%&lt;/a>&lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan ONT Alarm alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Warning</severity>
+      <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%parm[alarm-type-id]%" alarm-type="1" auto-clean="false" />
+   </event>
+
+   <!-- Alarm Clear -->
+   <event>
+      <uei>uei.opennms.org/Translator/Nokia/Lightspan/ONT/Alarm/Clear</uei>
+      <event-label>Nokia/Lightspan ONT Alarm Clear</event-label>
+      <descr>&lt;p>Nokia/Lightspan ONT Alarm Clear alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+         
+         APP_VERSION: %parm[APP_VERSION]% &lt;br>
+         MODULE_NAME: %parm[MODULE_NAME]% &lt;br>
+         ENTITY_NAME: %parm[ENTITY_NAME]% &lt;br>
+         ENTITY_TYPE: %parm[ENTITY_TYPE]% &lt;br>
+         alarm-type-id: %parm[alarm-type-id]% &lt;br>
+         event-time: %parm[event-time]% &lt;br>
+         perceived-severity: %parm[perceived-severity]% &lt;br>
+         alarm-text: %parm[alarm-text]% &lt;br>
+         Serial-Number: %parm[Serial-Number]% &lt;br>
+         CT-Name: %parm[CT-Name]% &lt;br>
+         
+         &lt;br>
+         &lt;a href=&quot;event/detail.jsp?id=%parm[originalEventId]%&quot;>Original Event ID %parm[originalEventId]%&lt;/a>&lt;br>
+
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p>
+         &lt;br>
+         All Params: %parm[all]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Nokia/Lightspan ONT Alarm Clear alarm-type-id: %parm[alarm-type-id]% alarm-text: %parm[alarm-text]%&lt;/p>
+      </logmsg>
+      <severity>Cleared</severity>
+      <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%parm[alarm-type-id]%" alarm-type="2"
+         clear-key="uei.opennms.org/Translator/Nokia/Lightspan/ONT/Alarm/Raise:%dpname%:%nodeid%:%parm[alarm-type-id]%" auto-clean="false" />
+   </event>
+
+
+</events>

@@ -1,0 +1,321 @@
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Emergency</uei>
+      <event-label>Calix/Axos Syslog Event (Syslog/Emergency)</event-label>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Critical</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Alert</uei>
+      <event-label>Calix/Axos Syslog Event (Syslog/Alert)</event-label>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Major</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Critical</uei>
+      <event-label>Calix/Axos Syslog Event (Syslog/Critical)</event-label>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Critical</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Error</uei>
+      <event-label>Calix/Axos Syslog Event (Syslog/Error)</event-label>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Minor</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Warning</uei>
+      <event-label>Calix/Axos Syslog Event (Syslog/Warning)</event-label>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Warning</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Notice</uei>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Informational</uei>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Normal</severity>
+   </event>
+   <event>
+      <uei>uei.opennms.org/Calix/Axos/Syslog/Debug</uei>
+      <descr>&lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;br>
+         Node ID: %nodeid%&lt;br>
+         Host: %nodelabel%&lt;br>
+         Interface: %interface% &lt;br>
+         Process: %parm[process]% &lt;br>
+         PID: %parm[processid]% &lt;br>
+         Severity: %severity% &lt;br>
+         Process: %process% &lt;br>
+         Service (facility): %service% &lt;br>
+         &lt;br>
+
+         ShelfId: %parm[ShelfId]% &lt;br>
+         SlotId: %parm[SlotId]% &lt;br>
+         ActiveOrStandby: %parm[ActiveOrStandby]% &lt;br>
+         ProcessId: %parm[ProcessId]% &lt;br>
+         LogFacility: %parm[LogFacility]% &lt;br>
+         Event: %parm[Event]% &lt;br>
+         Id: %parm[Id]% &lt;br>
+         SyslogSeverity: %parm[SyslogSeverity]% &lt;br>
+         PerceivedSeverity: %parm[PerceivedSeverity]% &lt;br>
+         LogName: %parm[LogName]% &lt;br>
+         LogCategory: %parm[LogCategory]% &lt;br>
+         LogCause: %parm[LogCause]% &lt;br>
+         Details: %parm[Details]% &lt;br>
+         Xpath: %parm[Xpath]% &lt;br>
+         Address: %parm[Address]% &lt;br>
+         AdditionalInfo: %parm[AdditionalInfo]% &lt;br>
+         &lt;br>
+         Message: %parm[syslogmessage]% &lt;br>
+         &lt;br>
+         Raw Syslog Message: %parm[rawSyslogmessage]% &lt;br>
+         &lt;/p></descr>
+      <logmsg dest="logndisplay">
+         &lt;p>Calix/Axos Syslog Event Name: %parm[LogName]% Cause: %parm[LogCause]%&lt;/p>
+      </logmsg>
+      <severity>Normal</severity>
+   </event>
+
+</events>

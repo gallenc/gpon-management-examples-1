@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- scriptd-config.xml syslog nodeid transaltor revision 0.0.1 -->
+<scriptd-configuration transactional="false" >
+    <engine language="beanshell" className="bsh.util.BeanShellBSFEngine" extensions="bsh" />
+    <start-script language="beanshell">
+
+      log = bsf.lookupBean("log");
+      log.debug("running start script");
+      
+      import java.util.ArrayList;
+      import java.util.List;
+
+      /*source("/opt/opennms/etc/scriptedApacheHttpAsyncClient.bsh"); */
+      /* scriptedClient = scriptedApacheHttpAsyncClient(); */
+      
+      /* set time out for async client http requests to 5 seconds */
+      /* scriptedClient.setTimeout(5000); */
+      
+ 
+
+      log.debug("end of start script");
+
+    </start-script>
+
+    <stop-script language="beanshell">
+
+      log = bsf.lookupBean("log");
+      log.debug("running beanshell stop script");
+      
+      
+      log.debug("end of stop script");
+
+    </stop-script>
+
+    <event-script language="beanshell">
+
+        log = bsf.lookupBean("log");
+        log.debug("running on event script");
+        
+        ievent = bsf.lookupBean("event");
+        node = bsf.lookupBean("node");
+
+        log.debug("end of on event script");
+
+    </event-script>
+
+
+</scriptd-configuration>

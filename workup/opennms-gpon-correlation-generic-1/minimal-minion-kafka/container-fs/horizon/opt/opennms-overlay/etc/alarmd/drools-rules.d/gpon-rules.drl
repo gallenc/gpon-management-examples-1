@@ -1,0 +1,253 @@
+/*******************************************************************************
+ * This file is part of OpenNMS(R).
+ *
+ * Copyright (C) 2019 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2019 The OpenNMS Group, Inc.
+ *
+ * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
+ *
+ * OpenNMS(R) is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * OpenNMS(R) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with OpenNMS(R).  If not, see:
+ *      http://www.gnu.org/licenses/
+ *
+ * For more information contact:
+ *     OpenNMS(R) Licensing <license@opennms.org>
+ *     http://www.opennms.org/
+ *     http://www.opennms.com/
+ *******************************************************************************/
+/* EXAMPLE this rule definition only creates a situation for accumulated alarms - does not use ack */
+package org.opennms.netmgt.alarmd.drools;
+
+import java.util.Date;
+import org.kie.api.time.SessionClock;
+import org.opennms.netmgt.model.OnmsAlarm;
+import org.opennms.netmgt.model.OnmsSeverity;
+import org.opennms.netmgt.model.AlarmAssociation;
+
+import org.opennms.netmgt.model.TroubleTicketState;
+import org.opennms.netmgt.model.OnmsNode;
+import org.opennms.netmgt.model.OnmsAssetRecord;
+
+import org.opennms.netmgt.model.events.EventBuilder;
+import org.opennms.netmgt.xml.event.AlarmData;
+import org.opennms.netmgt.alarmd.drools.AlarmService;
+import org.opennms.netmgt.model.OnmsEventParameter;
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+global org.opennms.netmgt.alarmd.drools.AlarmService alarmService;
+
+declare org.opennms.netmgt.model.OnmsAlarm
+    @role(event)
+    @timestamp(lastUpdateTime)
+end
+
+
+/** ******************** */
+/* Parent Situation Rule */
+/** ******************** */
+rule "parent situation rule"
+
+  enabled true
+    
+  when
+    $sessionClock : SessionClock()
+
+    // get node lost service alarm for passive splitters
+    $alarm : OnmsAlarm(uei =="uei.opennms.org/nodes/nodeLostService",
+                       alarmType == OnmsAlarm.PROBLEM_TYPE,
+                       severity != OnmsSeverity.CLEARED, 
+                       isSituation() == false,
+                       getServiceType().getName() in ("passive-secondary-node", "passive-primary-node"),
+                       node!=null,
+                       $nodeid : node.id
+                      )
+                      
+                      
+    // get alarms below the splitter
+    $relatedAlarms : LinkedList( ) 
+                   from collect ( OnmsAlarm(alarmType == OnmsAlarm.PROBLEM_TYPE || alarmType == OnmsAlarm.PROBLEM_WITHOUT_RESOLUTION_TYPE, 
+                       severity != OnmsSeverity.CLEARED, 
+                       node != null,
+                       node.parent !=null,
+                       node.getParent().getId() == $nodeid                
+                  ) )
+                  
+
+  then
+ 
+    Date now = new Date(drools.getWorkingMemory().getSessionClock().getCurrentTime());
+     
+    // debugging messages - note change to alarmService.debug in production
+    alarmService.warn("parent situation rule: found passive splitter alarm details {} for alarm {}", getAlarmDetails($alarm), $alarm);
+ 
+    alarmService.warn("parent situation rule: relatedAlarms size {}", $relatedAlarms.size());
+    for (Object onmsAlarmObject: $relatedAlarms){
+        OnmsAlarm relatedAlarm = (OnmsAlarm) onmsAlarmObject;
+        alarmService.warn("parent situation rule:    relatedAlarm {}", relatedAlarm);
+    }
+
+    // end of debugging messages
+
+    Set<String> alarmReductionKeys= new LinkedHashSet<String>();
+    
+    String msg = "related alarms: ";
+    for(Object onmsAlarmObject : $relatedAlarms){
+         OnmsAlarm relatedAlarm = (OnmsAlarm) onmsAlarmObject;
+         if(relatedAlarm.getSeverity() != OnmsSeverity.CLEARED ) {
+             alarmService.warn("parent situation rule: adding reduction key from relatedAlarm {}", relatedAlarm);
+             alarmReductionKeys.add(relatedAlarm.getReductionKey());
+             msg = msg +" "+ relatedAlarm.getId() +" "+ relatedAlarm.getSeverity().toString() +" |";
+         } else {
+             alarmService.warn("parent situation rule: not adding reduction key from cleared relatedAlarm {}", relatedAlarm);
+         }
+    }
+    
+
+    //alarmService.acknowledgeAlarm($alarm, now);
+    
+    if (! alarmReductionKeys.isEmpty()) {
+        turnAlarmIntoSituation(alarmService, alarmReductionKeys, $alarm, msg, now);
+    }
+
+    alarmService.warn("parent situation rule: ********************** end of rule");
+
+end
+
+
+/* turns an alarm into a situation by sending an event with params for related-reductionKey- */
+function void turnAlarmIntoSituation(AlarmService alarmService, Set alarmReductionKeys, OnmsAlarm alarm, String message, Date date){
+      String uei = alarm.getUei();
+      Integer nodeId = alarm.getNode().getId();
+      String serviceName = alarm.getServiceType().getName();
+      InetAddress ipAddr =  alarm.getIpAddr();
+      OnmsSeverity severity = alarm.getSeverity();
+      
+      EventBuilder builder = new EventBuilder(uei, "drools", date);
+      builder.setNodeid(nodeId);
+      builder.setService(serviceName);
+      builder.setInterface(ipAddr);
+      builder.setSeverity(severity.getLabel());
+      
+      builder.setLogDest("logndisplay");
+      builder.setDescription(message);
+      builder.addParam("eventReason","turning alarm id="+alarm.getId()+" into situation" );
+      
+      for (Object reduxObj : alarmReductionKeys) {
+           String redux = (String) reduxObj;
+           // TOOD revisit when event_parameters table supports multiple params with the same name (NMS-10214)
+           // For now, suffix the parameter name with the value.
+           builder.addParam("related-reductionKey-" + redux.hashCode(), redux);
+      }
+      alarmService.warn("alarm service turning alarm into a situation event: {}", builder.getEvent());
+      alarmService.sendEvent(builder.getEvent());
+
+}
+
+
+
+/* sends a simple event to the event bus */
+function void sendSimpleEvent(AlarmService alarmService, Integer nodeId, String uei, OnmsSeverity severity, String msg) {
+        EventBuilder builder = new EventBuilder(uei, "drools");
+        AlarmData data = new AlarmData();
+        builder.setNodeid(nodeId);
+        builder.setLogDest("logndisplay");
+        builder.setLogMessage(msg);
+        builder.setSeverity(severity.getLabel());
+        alarmService.warn("alarm service sending new simple event: {}", builder.getEvent());
+        alarmService.sendEvent(builder.getEvent());
+}
+
+
+/* Used for debugging messages. Provides a toString() of the  node details and parent nodeId for a given alarm */
+function String getAlarmDetails(OnmsAlarm alarm){
+
+   String msg="";
+
+   String nodeLabel = null;
+   String foreignId = null;
+   String foreignSource = null;
+
+   String displayCategory = null;
+   String managedObjectType = null;
+   String managedObjectInstance = null;
+   
+   String parentNodeLabel = null;
+   String parentForeignId = null;
+   String parentForeignSource = null;
+   Integer parentId = null;
+   
+   try {
+      OnmsNode node = alarm.getNode();
+      if (node!=null) {
+         nodeLabel = node.getLabel();
+         foreignId = node.getForeignId();
+         foreignSource = node.getForeignSource();
+      
+         OnmsAssetRecord assetRecord = node.getAssetRecord();
+         if (assetRecord!=null){
+            displayCategory = assetRecord.getDisplayCategory();
+            managedObjectType = assetRecord.getManagedObjectType();
+            managedObjectInstance = assetRecord.getManagedObjectInstance();
+         }
+      
+         OnmsNode parent = node.getParent();
+         if (parent !=null){
+            parentId = parent.getId();
+            // we can only get the parent id because we are not in a hibernate session and lazy initialise of parent.getLabel() etc.
+         }
+      }
+
+   }  catch ( Exception ex) {
+      msg = msg+ "error getAlarmDetails\n" + exceptionStackTraceToString(ex)+"\n"; 
+   }
+
+   msg = msg+ "alarm node details: "+
+      " nodeLabel ="+ nodeLabel +
+      " foreignId ="+ foreignId +
+      " foreignSource ="+ foreignSource +
+      " displayCategory ="+ displayCategory +
+      " managedObjectType ="+ managedObjectType +
+      " managedObjectInstance ="+  managedObjectInstance +
+      " parentId ="+ parentId;
+      
+  return msg;
+}
+
+/* prints event parameters of an alarm for debugging */
+function String printEventParameters(AlarmService alarmService, List eventParameters) {
+    String result="parameters:[";
+    for (Object paramObj : eventParameters) {
+          OnmsEventParameter param = (OnmsEventParameter) paramObj;
+          result=result+"{ name: "+param.getName()+", value: "+param.getValue()+"}";
+    }
+    return result+"]";
+}
+
+/* returns stacktrace of exception as string */
+function String exceptionStackTraceToString(Exception ex){
+      StringWriter sw = new StringWriter();
+      ex.printStackTrace(new PrintWriter(sw));
+      return sw.toString();
+}
+
+

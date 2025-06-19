@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model-import xmlns="http://xmlns.opennms.org/xsd/config/model-import" foreign-source="gpon1">
+    <node node-label="netsnmp1" foreign-id="netsnmp1" parent-foreign-source="gpon1" parent-foreign-id="splice1">
+        <interface ip-addr="172.20.0.100" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="00061"/>
+        <asset name="longitude" value="-0.3020000"/>
+        <asset name="assetNumber" value="52236"/>
+        <asset name="latitude" value="52.5180000"/>
+    </node>
+    <node node-label="netsnmp2" foreign-id="netsnmp2" parent-foreign-source="gpon1" parent-foreign-id="splice1">
+        <interface ip-addr="172.20.0.101" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="000121"/>
+        <asset name="latitude" value="54.9633229"/>
+        <asset name="assetNumber" value="20001"/>
+        <asset name="longitude" value="-1.6969802"/>
+    </node>
+    <node node-label="netsnmp3" foreign-id="netsnmp3" parent-foreign-source="gpon1" parent-foreign-id="splice1">
+        <interface ip-addr="172.20.0.103" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="000121"/>
+        <asset name="assetNumber" value="20002"/>
+        <asset name="longitude" value="-1.6901506"/>
+        <asset name="latitude" value="54.9578241"/>
+    </node>
+    <node node-label="netsnmp4" foreign-id="netsnmp4" parent-foreign-source="gpon1" parent-foreign-id="splice2">
+        <interface ip-addr="172.20.0.104" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="000121"/>
+        <asset name="assetNumber" value="20003"/>
+        <asset name="longitude" value="-1.6772076"/>
+        <asset name="latitude" value="54.9555439"/>
+    </node>
+    <node node-label="netsnmp5" foreign-id="netsnmp5" parent-foreign-source="gpon1" parent-foreign-id="splice2">
+        <interface ip-addr="172.20.0.105" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="000121"/>
+        <asset name="latitude" value="54.9542568"/>
+        <asset name="longitude" value="-1.6664439"/>
+        <asset name="assetNumber" value="20004"/>
+    </node>
+    <node node-label="netsnmp6" foreign-id="netsnmp6" parent-foreign-source="gpon1" parent-foreign-id="splice2">
+        <interface ip-addr="172.20.0.106" snmp-primary="P">
+            <monitored-service service-name="SNMP"/>
+            <monitored-service service-name="ICMP"/>
+        </interface>
+        <category name="CPE"/>
+        <category name="000121"/>
+        <asset name="latitude" value="54.9508773"/>
+        <asset name="longitude" value="-1.6471114"/>
+        <asset name="assetNumber" value="20005"/>
+    </node>
+    <node node-label="splice1" foreign-id="splice1" parent-foreign-source="selfmonitor" parent-foreign-id="1">
+        <interface ip-addr="254.0.0.1" snmp-primary="N"/>
+        <asset name="latitude" value="54.9508773"/>
+        <asset name="assetNumber" value="splice1"/>
+        <asset name="longitude" value="-1.6471124"/>
+    </node>
+    <node node-label="splice2" foreign-id="splice2" parent-foreign-source="gpon1" parent-foreign-id="splice1">
+        <interface ip-addr="254.0.0.1" snmp-primary="N"/>
+        <asset name="latitude" value="54.9508773"/>
+        <asset name="assetNumber" value="splice2"/>
+        <asset name="longitude" value="-1.6471134"/>
+    </node>
+    <node node-label="splice3" foreign-id="splice3" parent-foreign-source="gpon1" parent-foreign-id="splice1">
+        <interface ip-addr="254.0.0.1" snmp-primary="N"/>
+        <asset name="latitude" value="54.9508773"/>
+        <asset name="longitude" value="-1.6471144"/>
+        <asset name="assetNumber" value="splice3"/>
+    </node>
+</model-import>
