@@ -111,7 +111,7 @@ services:
         ipv4_address: 172.20.0.20
 
   kafka-ui:
-    image: provectuslabs/kafka-ui:latest
+    image: provectuslabs/kafka-ui:${KAFKA_UI_VERSION:-latest}
     container_name: kafka-ui
     hostname: kafka-ui
     depends_on:
